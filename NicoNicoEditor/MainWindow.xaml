@@ -1,0 +1,38 @@
+﻿<Window x:Class="WpfApplication4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ニコ生番組詳細・コミュ説明文エディタ" Height="705" Width="803" ResizeMode="NoResize" Icon="Resources/nc10965.ico">
+    <StackPanel Margin="0,0,2,1">
+        <ToolBar Height="33">
+            <Label Content="Size" Height="28" VerticalAlignment="Top"/>
+            <ComboBox x:Name="Sizes" Height="28" Margin="0" VerticalAlignment="Top" Width="63" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem Content="デフォルト" Tag="6" HorizontalAlignment="Left" Width="118"/>
+                <ComboBoxItem Content="1" Tag="1" HorizontalAlignment="Left" Width="118"/>
+                <ComboBoxItem Content="2" Tag="2" HorizontalAlignment="Left" Width="118"/>
+                <ComboBoxItem Content="3" Tag="3" HorizontalAlignment="Left" Width="118"/>
+                <ComboBoxItem Content="4" Tag="4" HorizontalAlignment="Left" Width="118"/>
+                <ComboBoxItem Content="5" Tag="5" HorizontalAlignment="Left" Width="118"/>
+            </ComboBox>
+            <Button x:Name="Bold" Content="強調" VerticalAlignment="Bottom" Width="40" Height="28" Click="Bold_Click"/>
+            <Button x:Name="Underline" Content="下線" VerticalAlignment="Bottom" Width="40" Height="28" Click="Underline_Click"/>
+            <Button x:Name="Strikethrough" Content="打消し" VerticalAlignment="Bottom" Width="40" Height="28" Click="Strikethrough_Click"/>
+            <Button x:Name="Color" Content="カラー" VerticalAlignment="Bottom" Width="40" Height="28" Click="Color_Click"/>
+            <Button x:Name="ToHtml" Content="コードへ変換" Height="28" VerticalAlignment="Top" Width="75" Click="ToHtml_Click"/>
+            <CheckBox x:Name="ShowBR" Content="&lt;BR>" Height="28" VerticalAlignment="Top" Checked="ShowBR_Checked" Unchecked="ShowBR_Unchecked"/>
+            <Separator Height="28" Margin="0" VerticalAlignment="Top" Width="2"/>
+            <Button x:Name="New" Content="新規" Height="28" VerticalAlignment="Top" Click="New_Click" />
+            <Button x:Name="Open" Content="開く" Height="28" VerticalAlignment="Top" Click="Open_Click" />
+            <Button x:Name="Save" Content="保存" Height="28" VerticalAlignment="Top" Click="Save_Click" />
+            <Separator Height="28" Margin="0" VerticalAlignment="Top" Width="2"/>
+            <Label x:Name="Count" Content="コードの文字数：" Height="28" VerticalAlignment="Top"/>
+        </ToolBar>
+        <RichTextBox x:Name="rtb" Height="320" Block.LineHeight="1" >
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <TextBox x:Name="htmlText" Height="320" TextWrapping="Wrap" Text="" IsReadOnly="True"/>
+    </StackPanel>
+</Window>
