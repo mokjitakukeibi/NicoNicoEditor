@@ -26,6 +26,8 @@ namespace WpfApplication4
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool hasBR = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -280,12 +282,12 @@ namespace WpfApplication4
                     }
                     if (fontSize == 6)
                     {
-                        node.ParentNode.ReplaceChild(doc.CreateTextNode(node.InnerHtml + "\r\n"), node);
+                        node.ParentNode.ReplaceChild(doc.CreateTextNode(node.InnerHtml + (hasBR ? "<br>\r\n" : "\r\n")), node);
                     }
                     else
                     {
                         string fontTag = string.Format("<font size=\"{0}\">", fontSize);
-                        node.ParentNode.ReplaceChild(doc.CreateTextNode(fontTag + node.InnerHtml + "</font>" + "\r\n"), node);
+                        node.ParentNode.ReplaceChild(doc.CreateTextNode(fontTag + node.InnerHtml + "</font>" + (hasBR ? "<br>\r\n" : "\r\n")), node);
                     }
                 }
             }
@@ -400,11 +402,13 @@ namespace WpfApplication4
 
         private void ShowBR_Checked(object sender, RoutedEventArgs e)
         {
+            hasBR = true;
             htmlText.Text = htmlText.Text.Replace("\r\n", "<br>\r\n");
         }
 
         private void ShowBR_Unchecked(object sender, RoutedEventArgs e)
         {
+            hasBR = false;
             htmlText.Text = htmlText.Text.Replace("<br>\r\n", "\r\n");
         } 
     }
